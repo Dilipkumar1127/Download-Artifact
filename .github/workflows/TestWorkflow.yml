@@ -30,7 +30,7 @@ jobs:
           run: tar -xvf ./Downloads/uploadartifact.tar -C ./Downloads/
 
         - name: View the Download
-          run: cat uploadartifact
+          run: cat ./Downloads/uploadartifact
 
 
 
