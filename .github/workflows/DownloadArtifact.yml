@@ -58,7 +58,7 @@ jobs:
         uses: actions/download-artifact@v2
         if: ${{ inputs.CompressArtifacts == true }}
         with:
-          name: uploadartifact.tar
+          name: ${{inputs.outputArtifactUploadName}}.tar
           path: ${{inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
           
       - name: listing 
