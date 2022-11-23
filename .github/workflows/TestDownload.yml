@@ -1,12 +1,14 @@
-name: Test the Input Logic
+name: Test the Download Logic
 on: 
   push: 
     branches: main
 
 jobs:
   buildfile:
-    - name: Build a file 
-      run: echo This is a Input Artifact > uploadartifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build a file 
+        run: echo This is a Input Artifact > uploadartifact
       
   TestDownload:
     uses: Dilipkumar1127/Download-Artifact/.github/workflows/DownloadArtifact.yml@main
