@@ -39,6 +39,7 @@ jobs:
         with:
           name: ${{inputs.outputArtifactUploadName}}
           path: ${{inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
+      
 
       - name: Download artifact
         uses: actions/download-artifact@v3
@@ -59,7 +60,7 @@ jobs:
  
       - name: Publish Compressed Artifact
         uses: actions/upload-artifact@v3
-        if: inputs.CompressArtifacts == true
+        if: ${{inputs.CompressArtifacts == true}}
         # if: ${{ inputs.ArtifactName  }}
         with:
           name: ${{ inputs.outputArtifactUploadName }}.tar
