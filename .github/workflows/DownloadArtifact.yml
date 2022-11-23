@@ -70,6 +70,7 @@ jobs:
         run: ls -R
       
       - name: Extract Artifact
+        if: ${{ inputs.CompressArtifacts == true }}
         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
       
       - name: Publish Artifact
