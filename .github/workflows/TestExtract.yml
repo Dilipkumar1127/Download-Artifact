@@ -1,4 +1,4 @@
-name: Test Extract Logic
+name: Main Workflow
 on:
   workflow_call:
     inputs:
@@ -27,8 +27,8 @@ jobs:
     steps:
       - name: Create Dir 
         run: mkdir ${{inputs.outputArtifactPath}}
-      - name: echoing to a file
-        run: echo Hello World > ${{inputs.outputArtifactPath}}/${{inputs.outputArtifactUploadName}}
+#       - name: echoing to a file
+#         run: echo Hello World > ${{inputs.outputArtifactPath}}/${{inputs.outputArtifactUploadName}}
       
       - name: listing 
         run: ls -R 
