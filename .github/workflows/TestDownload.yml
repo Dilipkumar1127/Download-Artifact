@@ -16,5 +16,5 @@ jobs:
     
       WorkingDirectory: '.'
       inputArtifactPath: 'Downloads'
-      inputArtifactUploadName: 'uploadartifact'
+      inputArtifactDownloadName: 'uploadartifact'
       CompressArtifacts: false
