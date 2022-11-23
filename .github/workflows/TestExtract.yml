@@ -20,14 +20,14 @@ jobs:
         - name: Download Artifact
           uses: actions/download-artifact@v2
           with:
-            name: uploadartifact
+            name: uploadartifact.tar
             path: ./Downloads
       
         - name: List
           run: ls -R
         
         - name: Extract file 
-          run: tar -xvf ./Downloads/uploadartifact.tar -C ./Downloads/
+          run: tar -xvf uploadartifact.tar -C ./Downloads/
 
         - name: View the Download
           run: cat ./Downloads/uploadartifact
