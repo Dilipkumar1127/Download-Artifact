@@ -54,6 +54,12 @@ jobs:
 #       - name: Compressing Artifacts
 #         if: ${{ inputs.CompressArtifacts == true }}
 #         run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        if: ${{ inputs.CompressArtifacts == true }}
+        with:
+          name: uploadartifact.tar
+          path: ${{inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
         
       - name: Extract Compressed Artifact
         if: ${{ inputs.CompressArtifacts == true }}
