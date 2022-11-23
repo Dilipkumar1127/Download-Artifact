@@ -10,7 +10,7 @@ jobs:
       - name: Build a file 
         run: echo This is a Input Artifact > uploadartifact
       
-  TestDownload:
+  Download:
     uses: Dilipkumar1127/Download-Artifact/.github/workflows/MainWorkflow.yml@main
     with:
     
