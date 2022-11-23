@@ -26,6 +26,9 @@ jobs:
       
       - name: listing 
         run: ls -R 
+        
+      - name: working dir print
+        run : pwd
 
       - name: Download artifact
         uses: actions/download-artifact@v3
