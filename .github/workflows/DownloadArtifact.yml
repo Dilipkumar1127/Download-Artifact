@@ -37,7 +37,7 @@ jobs:
         if: ${{ inputs.CompressArtifacts == true }}
         run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
         
-      - name: Upload Artifact
+      - name: Upload Compressed Artifact
         uses: actions/upload-artifact@v3
         if: ${{ inputs.CompressArtifacts == true }}
         with:
@@ -55,12 +55,13 @@ jobs:
 #         if: ${{ inputs.CompressArtifacts == true }}
 #         run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
         
-# #       - name: Extract Artifact
-# #         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
+      - name: Extract Artifact
+        if: ${{ inputs.DownloadArtifact == true }}
+        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
         
-#       # - name: If Downloading is True
-#       #   if: ${{ inputs.DownloadArtifact == true }}
-#       #   run: tar -xvf ${{ inputs.ArtifactName }}.tar -C ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
+#       - name: If Downloading is True
+#         if: ${{ inputs.DownloadArtifact != true }}
+#         run: tar -xvf ${{ inputs.ArtifactName }}.tar -C ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
  
 #       - name: Publish Compressed Artifact
 #         uses: actions/upload-artifact@v3
