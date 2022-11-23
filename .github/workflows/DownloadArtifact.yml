@@ -55,8 +55,8 @@ jobs:
 #         if: ${{ inputs.CompressArtifacts == true }}
 #         run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
         
-      - name: Extract Artifact
-        if: ${{ inputs.DownloadArtifact == true }}
+      - name: Extract Compressed Artifact
+        if: ${{ inputs.CompressArtifacts == true }}
         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
         
 #       - name: If Downloading is True
