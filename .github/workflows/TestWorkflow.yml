@@ -12,7 +12,6 @@ jobs:
       outputArtifactPath: 'Downloads'
       outputArtifactUploadName: 'uploadartifact'
       CompressArtifacts: true
-      inputArtifactDownloadName: "test"
       
   DownlaodArtifact:
       runs-on: ubuntu-latest
