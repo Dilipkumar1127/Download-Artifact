@@ -26,8 +26,8 @@ jobs:
         - name: List
           run: ls -R
         
-#         - name: Extract file 
-#           run: tar -xvf ./Downloads/uploadartifact.tar -C ./Downloads/
+        - name: Extract file 
+          run: tar -xvf ./Downloads/uploadartifact.tar -C ./Downloads/
 
         - name: View the Download
           run: cat ./Downloads/uploadartifact
