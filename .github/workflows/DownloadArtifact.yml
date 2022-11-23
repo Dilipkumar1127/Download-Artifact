@@ -37,17 +37,17 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{inputs.outputArtifactUploadName}}
-          path: ${{ inputs.WorkingDirectory }}
+          path: ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
 
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: ${{ inputs.outputArtifactUploadName }}
-          path: ${{ inputs.WorkingDirectory }}/
+          path: ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
 
       - name: Compressing Artifacts
         if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}
+        run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}//${{inputs.outputArtifactPath}}
         
 #       - name: Extract Artifact
 #         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
@@ -69,11 +69,11 @@ jobs:
       
       - name: Publish Artifact
         uses: actions/upload-artifact@v3
-        if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts != true ) }}
+        if: ${{ ( inputs.outputArtifactPath ) && ( inputs.CompressArtifacts != true ) }}
         # if: ${{ inputs.ArtifactPath }}
         with:
           name: ${{ inputs.outputArtifactUploadName }}
-          path: ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}
+          path: ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/${{ inputs.outputArtifactUploadName }}
           retention-days: 5
       
 #       - name: listing 
