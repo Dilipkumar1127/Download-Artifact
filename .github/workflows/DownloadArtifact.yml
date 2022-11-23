@@ -55,8 +55,8 @@ jobs:
         if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts != true ) }}
         # if: ${{ inputs.ArtifactPath }}
         with:
-          name: ${{ inputs.${{ inputs.outputArtifactUploadName }} }}
-          path: ${{ inputs.WorkingDir }}/${{ inputs.outputArtifactUploadName }} }}
+          name: ${{ inputs.outputArtifactUploadName }}
+          path: ${{ inputs.WorkingDir }}/${{ inputs.outputArtifactUploadName }}
           retention-days: 5
 
       - name: Download artifact A
