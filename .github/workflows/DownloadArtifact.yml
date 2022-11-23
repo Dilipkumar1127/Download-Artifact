@@ -46,9 +46,14 @@ jobs:
           name: ${{inputs.inputArtifactDownloadName}}
           path: ${{inputs.WorkingDirectory }}/${{inputs.inputArtifactPath}}
       
+      - name: Extract Compressed Artifact
+        if: ${{ inputs.CompressArtifacts == true }}
+        run: tar -xvf ${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
+      
+      
       - name: Compressing Artifacts
         if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
+        run: tar -cvf ${{ inputs.inputArtifactDownloadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.inputArtifactPath}}/
         
       - name: Upload Compressed Artifact
         uses: actions/upload-artifact@v3
@@ -77,9 +82,9 @@ jobs:
       - name: listing 
         run: ls -R 
         
-      - name: Extract Compressed Artifact
-        if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -xvf ${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
+#       - name: Extract Compressed Artifact
+#         if: ${{ inputs.CompressArtifacts == true }}
+#         run: tar -xvf ${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
         
 #       - name: If Downloading is True
 #         if: ${{ inputs.DownloadArtifact != true }}
