@@ -20,7 +20,7 @@ jobs:
       WorkingDirectory: '.'
       inputArtifactPath: 'Downloads'
       inputArtifactDownloadName: 'uploadartifact'
-      CompressArtifacts: false
+      CompressArtifacts: true
       
   Extract:
     uses: Dilipkumar1127/Download-Artifact/.github/workflows/MainWorkflow.yml@main
