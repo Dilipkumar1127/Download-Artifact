@@ -1,4 +1,4 @@
-name: ExtractTest
+name: Test the Extract Logic
 on: 
   push: 
     branches: main
