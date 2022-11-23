@@ -1,0 +1,72 @@
+name: GitHub Actions Demo
+on:
+  workflow_call:
+    inputs:
+      CompressArtifacts:
+        default: true 
+        description: Whether to compress or not the Artifact
+        type: boolean  
+      outputArtifactUploadName:
+         default: outputartifact
+         type: string
+      WorkingDirectory:
+         default: '.'
+         type: string
+         description: specify start dir
+      outputArtifactPath:
+         default: Downloads
+         description: path of Artifact
+         type: string
+      
+jobs:
+  CreateBuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echoing to a file
+        run: echo Hello World > ${{inputs.outputArtifactUploadName}}
+      
+      - name: listing 
+        run: ls -R
+      
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.outputArtifactUploadName }}
+          path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactPath }}
+
+      - name: Compressing Artifacts
+        if: ${{ inputs.CompressArtifacts == true }}
+        run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{inputs.WorkingDir}}
+      
+      # - name: If Downloading is True
+      #   if: ${{ inputs.DownloadArtifact == true }}
+      #   run: tar -xvf ${{ inputs.ArtifactName }}.tar -C ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
+ 
+      - name: Publish Compressed Artifact
+        uses: actions/upload-artifact@v3
+        if: ${{ ( inputs.outputArtifactUploadName ) && ( inputs.CompressArtifacts == true ) }}
+        # if: ${{ inputs.ArtifactName  }}
+        with:
+          name: ${{ inputs.outputArtifactUploadName }}
+          path: ${{ inputs.outputArtifactUploadName }}.tar
+          retention-days: 5
+      
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v3
+        if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts != true ) }}
+        # if: ${{ inputs.ArtifactPath }}
+        with:
+          name: ${{ inputs.${{ inputs.outputArtifactUploadName }} }}
+          path: ${{ inputs.WorkingDir }}/${{ inputs.${{ inputs.outputArtifactUploadName }} }}
+          retention-days: 5
+
+      - name: Download artifact A
+        uses: actions/download-artifact@v3
+        if: ${{ ( inputs.${{ inputs.outputArtifactUploadName }} ) && (inputs.DownloadArtifact == true) }}
+        with:
+          name: ${{ inputs.${{ inputs.outputArtifactUploadName }} }}
+          # path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactPath }}
+      
+      - name: listing 
+        run: ls -R
