@@ -8,9 +8,9 @@ jobs:
     uses: Dilipkumar1127/Download-Artifact/.github/workflows/DownloadArtifact.yml@main
     with:
     
-      WorkingDirectory: .
-      outputArtifactPath: Downlaods
-      outputArtifactUploadName: uploadartifact
+      WorkingDirectory: '.'
+      outputArtifactPath: 'Downloads'
+      outputArtifactUploadName: 'uploadartifact'
       CompressArtifacts: true
       
   DownlaodArtifact:
