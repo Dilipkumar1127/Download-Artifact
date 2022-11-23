@@ -36,56 +36,48 @@ jobs:
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
-        if: ${{inputs.CompressArtifacts != true}}
         with:
           name: ${{inputs.outputArtifactUploadName}}
           path: ${{inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
-      
 
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{ inputs.outputArtifactUploadName }}
-          path: ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
-
-      - name: Compressing Artifacts
-        if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
+#       - name: Compressing Artifacts
+#         if: ${{ inputs.CompressArtifacts == true }}
+#         run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
         
-#       - name: Extract Artifact
-#         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
+# #       - name: Extract Artifact
+# #         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
         
-      # - name: If Downloading is True
-      #   if: ${{ inputs.DownloadArtifact == true }}
-      #   run: tar -xvf ${{ inputs.ArtifactName }}.tar -C ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
+#       # - name: If Downloading is True
+#       #   if: ${{ inputs.DownloadArtifact == true }}
+#       #   run: tar -xvf ${{ inputs.ArtifactName }}.tar -C ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
  
-      - name: Publish Compressed Artifact
-        uses: actions/upload-artifact@v3
-        if: ${{inputs.CompressArtifacts == true}}
-        # if: ${{ inputs.ArtifactName  }}
-        with:
-          name: ${{ inputs.outputArtifactUploadName }}.tar
-          path: ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
-          retention-days: 5
+#       - name: Publish Compressed Artifact
+#         uses: actions/upload-artifact@v3
+#         if: ${{inputs.CompressArtifacts == true}}
+#         # if: ${{ inputs.ArtifactName  }}
+#         with:
+#           name: ${{ inputs.outputArtifactUploadName }}.tar
+#           path: ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
+#           retention-days: 5
           
-      - name: print path
-        run: ls -R
-      
-      - name: Extract Artifact
-        if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
-      
-      - name: Publish Artifact
-        uses: actions/upload-artifact@v3
-        if: ${{ ( inputs.outputArtifactPath ) && ( inputs.CompressArtifacts != true ) }}
-        # if: ${{ inputs.ArtifactPath }}
-        with:
-          name: ${{ inputs.outputArtifactUploadName }}
-          path: ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/${{ inputs.outputArtifactUploadName }}
-          retention-days: 5
-      
-#       - name: listing 
+#       - name: print path
 #         run: ls -R
       
-#       - name: view Download
-#         run: ls -R && cat ${{ inputs.outputArtifactUploadName }}
+#       - name: Extract Artifact
+#         if: ${{ inputs.CompressArtifacts == true }}
+#         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
+      
+#       - name: Publish Artifact
+#         uses: actions/upload-artifact@v3
+#         if: ${{ ( inputs.outputArtifactPath ) && ( inputs.CompressArtifacts != true ) }}
+#         # if: ${{ inputs.ArtifactPath }}
+#         with:
+#           name: ${{ inputs.outputArtifactUploadName }}
+#           path: ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/${{ inputs.outputArtifactUploadName }}
+#           retention-days: 5
+      
+# #       - name: listing 
+# #         run: ls -R
+      
+# #       - name: view Download
+# #         run: ls -R && cat ${{ inputs.outputArtifactUploadName }}
