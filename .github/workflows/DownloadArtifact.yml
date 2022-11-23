@@ -73,7 +73,7 @@ jobs:
         run: ls -R
         
       - name: Extract Artifact
-        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/ ${{ outputArtifactPath}}/
+        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/ ${{ inputs.outputArtifactPath}}/
         
       - name: view Download
         run: ls -R && cat ${{ inputs.outputArtifactUploadName }}
