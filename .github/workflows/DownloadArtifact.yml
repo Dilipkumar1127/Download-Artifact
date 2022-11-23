@@ -16,7 +16,6 @@ on:
          description: path of Artifact
          type: string 
       inputArtifactDownloadName:
-         default: outputartifact
          type: string
       inputArtifactPath:
          description: path of Artifact
