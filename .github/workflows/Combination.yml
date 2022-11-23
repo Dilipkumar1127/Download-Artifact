@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build a file 
-        run: echo This is a Input Artifact > uploadartifact
+        run: echo This is a Input Artifact > Downloads/uploadartifact
         
       - name: Path
         run: ls -R
