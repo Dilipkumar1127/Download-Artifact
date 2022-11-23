@@ -66,6 +66,9 @@ jobs:
           name: ${{ inputs.outputArtifactUploadName }}
           path: ${{ inputs.outputArtifactUploadName }}.tar
           retention-days: 5
+          
+      - name: print path
+        run: ls -R
       - name: Extract Artifact
         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
       
