@@ -10,7 +10,7 @@ on:
          default: outputartifact
          type: string
       WorkingDirectory:
-         default: '.'
+         default: './'
          type: string
          description: specify start dir
       outputArtifactPath:
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echoing to a file
-        run: echo Hello World > Download/${{inputs.outputArtifactUploadName}}
+        run: echo Hello World > ${{inputs.outputArtifactUploadName}}
       
       - name: listing 
         run: ls -R 
@@ -34,7 +34,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ inputs.outputArtifactUploadName }}
-          path: /home/runner/work/Download-Artifact/Download-Artifact/
+          path: ${{ inputs.WorkingDirectory }}
 
       - name: Compressing Artifacts
         if: ${{ inputs.CompressArtifacts == true }}
