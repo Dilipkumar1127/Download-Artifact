@@ -54,7 +54,7 @@ jobs:
       
       - name: Compressing Artifacts
         if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf ${{ inputs.inputArtifactDownloadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.inputArtifactPath}}/
+        run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
         
       - name: Upload Compressed Artifact
         uses: actions/upload-artifact@v3
