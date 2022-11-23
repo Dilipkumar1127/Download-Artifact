@@ -9,6 +9,9 @@ jobs:
     steps:
       - name: Build a file 
         run: echo This is a Input Artifact > uploadartifact
+        
+      - name: Path
+        run: ls -R
       
   Download:
     uses: Dilipkumar1127/Download-Artifact/.github/workflows/MainWorkflow.yml@main
