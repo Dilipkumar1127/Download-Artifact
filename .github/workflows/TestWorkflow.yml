@@ -5,7 +5,7 @@ on:
 
 jobs:
   TestDownload:
-    uses: Dilipkumar1127/Download-Artifact/.github/workflows/DownloadArtifact.yml@main
+    uses: Dilipkumar1127/Download-Artifact/.github/workflows/TestExtract.yml@main
     with:
     
       WorkingDirectory: '.'
