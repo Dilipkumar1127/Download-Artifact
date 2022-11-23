@@ -3,7 +3,6 @@ on:
   workflow_call:
     inputs:
       CompressArtifacts:
-        default: true 
         description: Whether to compress or not the Artifact
         type: boolean  
       outputArtifactUploadName:
@@ -69,6 +68,7 @@ jobs:
           
       - name: print path
         run: ls -R
+      
       - name: Extract Artifact
         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
       
