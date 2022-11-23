@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echoing to a file
-        run: echo Hello World > ${{inputs.outputArtifactUploadName}}
+        run: echo Hello World > Download/${{inputs.outputArtifactUploadName}}
       
       - name: listing 
         run: ls -R 
