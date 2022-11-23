@@ -1,4 +1,4 @@
-name: Test the Download
+name: TesttheDownload
 on: 
   push: 
     branches: main
