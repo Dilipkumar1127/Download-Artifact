@@ -6,17 +6,31 @@ on:
 jobs:
   TestDownload:
     uses: Dilipkumar1127/Download-Artifact/.github/workflows/DownloadArtifact.yml@main
-#     with:
-#       WorkingDirectory: .
-#       outputArtifactUploadName: uploadartifact
-#       CompressArtifacts: True
-#       - name: List
-#       - run: ls -R
-#       - name: Extract file 
-#       - run: tar -xvf ./uploadartifact.tar -C ./
+    with:
+    
+      WorkingDirectory: .
+      outputArtifactPath: Downlaods
+      outputArtifactUploadName: uploadartifact
+      CompressArtifacts: true
+      
+  DownlaodArtifact:
+      runs-on: ubuntu-latest
+      needs: TestDownload
+      steps: 
+        - name: Download Artifact
+          uses: actions/download-artifact@v2
+          with:
+            name: ${{inputs.outputArtifactUploadName}}
+            path: ${{inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
+      
+        - name: List
+          run: ls -R
+        
+        - name: Extract file 
+          run: tar -xvf ./uploadartifact.tar -C ./
 
-#       - name: View the Download
-#         run: cat ${{ inputs.outputArtifactUploadName }}
+        - name: View the Download
+          run: cat ${{ inputs.outputArtifactUploadName }}
 
 
 
