@@ -21,8 +21,10 @@ jobs:
   CreateBuild:
     runs-on: ubuntu-latest
     steps:
+      - name: Create Dir 
+        run: mkdir ${{inputs.outputArtifactPath}}
       - name: echoing to a file
-        run: echo Hello World > ${{inputs.outputArtifactUploadName}}
+        run: echo Hello World > ${{inputs.outputArtifactPath}}/${{inputs.outputArtifactUploadName}}
       
       - name: listing 
         run: ls -R 
@@ -30,8 +32,8 @@ jobs:
       - name: working dir print
         run : pwd
       
-      - name: Create Dir 
-        run: mkdir ${{inputs.outputArtifactPath}}
+#       - name: Create Dir 
+#         run: mkdir ${{inputs.outputArtifactPath}}
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
