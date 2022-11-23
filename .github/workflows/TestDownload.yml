@@ -11,7 +11,7 @@ jobs:
         run: echo This is a Input Artifact > uploadartifact
       
   TestDownload:
-    uses: Dilipkumar1127/Download-Artifact/.github/workflows/MainWorkflow.yml.yml@main
+    uses: Dilipkumar1127/Download-Artifact/.github/workflows/MainWorkflow.yml@main
     with:
     
       WorkingDirectory: '.'
