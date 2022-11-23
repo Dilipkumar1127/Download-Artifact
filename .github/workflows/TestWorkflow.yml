@@ -27,7 +27,7 @@ jobs:
           run: ls -R
         
         - name: Extract file 
-          run: tar -xvf ./uploadartifact.tar -C ./
+          run: tar -xvf ./Downloads/uploadartifact.tar -C ./Downloads
 
         - name: View the Download
           run: cat ${{ inputs.outputArtifactUploadName }}
