@@ -34,6 +34,14 @@ jobs:
       
 #       - name: Create Dir 
 #         run: mkdir ${{inputs.outputArtifactPath}}
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        if: ${{inputs.inputArtifactDownloadName}}
+        with:
+          name: ${{inputs.inputArtifactDownloadName}}
+          path: ${{inputs.WorkingDirectory }}/${{inputs.inputArtifactPath}}
+      
       - name: Compressing Artifacts
         if: ${{ inputs.CompressArtifacts == true }}
         run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
