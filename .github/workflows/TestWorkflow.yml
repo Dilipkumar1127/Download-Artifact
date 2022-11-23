@@ -11,7 +11,7 @@ jobs:
       WorkingDirectory: '.'
       outputArtifactPath: 'Downloads'
       outputArtifactUploadName: 'uploadartifact'
-      CompressArtifacts: true
+      CompressArtifacts: false
       
   DownlaodArtifact:
       runs-on: ubuntu-latest
