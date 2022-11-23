@@ -20,7 +20,7 @@ jobs:
         - name: Download Artifact
           uses: actions/download-artifact@v2
           with:
-            name: uploadartifact.tar
+            name: uploadartifact
             path: ./Downloads
       
         - name: List
