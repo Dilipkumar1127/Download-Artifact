@@ -65,14 +65,14 @@ jobs:
         # if: ${{ inputs.ArtifactPath }}
         with:
           name: ${{ inputs.outputArtifactUploadName }}
-          path: ${{ inputs.WorkingDir }}/${{ inputs.outputArtifactUploadName }}
+          path: ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}
           retention-days: 5
       
       - name: listing 
         run: ls -R
         
       - name: Extract Artifact
-        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}.tar -c ${{ inputs.WorkingDirectory }}
+        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}.tar -c ${{ inputs.WorkingDirectory }}/
         
       - name: view Download
         run: ls -R && cat ${{ inputs.outputArtifactUploadName }}
