@@ -39,6 +39,7 @@ jobs:
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
+        if: ${{ inputs.CompressArtifacts == true }}
         with:
           name: ${{inputs.outputArtifactUploadName}}.tar
           path: ${{inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
