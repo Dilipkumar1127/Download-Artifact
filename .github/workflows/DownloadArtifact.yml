@@ -48,7 +48,7 @@ jobs:
 
       - name: Compressing Artifacts
         if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}
+        run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
         
 #       - name: Extract Artifact
 #         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
