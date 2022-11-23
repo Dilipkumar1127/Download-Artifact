@@ -69,11 +69,16 @@ jobs:
           path: ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}
           retention-days: 5
       
+      
+      - name: Create Dir 
+        run: mkdir ${{inputs.outputArtifactPath}}
+      
       - name: listing 
         run: ls -R
+      
         
       - name: Extract Artifact
-        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/
+        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
         
       - name: view Download
         run: ls -R && cat ${{ inputs.outputArtifactUploadName }}
