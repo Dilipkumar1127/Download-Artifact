@@ -47,8 +47,8 @@ jobs:
           path: ${{inputs.WorkingDirectory }}/${{inputs.inputArtifactPath}}
       
       - name: Extract Compressed Artifact
-        if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -xvf ${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
+        if: ${{ (inputs.inputArtifactDownloadName) && (inputs.CompressArtifacts == true) }}
+        run: tar -xvf ${{ inputs.inputArtifactDownloadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.inputArtifactPath}}/
       
       
       - name: Compressing Artifacts
