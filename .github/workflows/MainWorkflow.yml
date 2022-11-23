@@ -26,6 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create Dir 
+        if: ${{inputs.outputArtifactPath}}
         run: mkdir ${{inputs.outputArtifactPath}}
 #       - name: echoing to a file
 #         run: echo Hello World > ${{inputs.outputArtifactPath}}/${{inputs.outputArtifactUploadName}}
