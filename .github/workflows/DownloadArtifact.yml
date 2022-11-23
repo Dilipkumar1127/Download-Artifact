@@ -67,13 +67,6 @@ jobs:
           name: ${{ inputs.outputArtifactUploadName }}
           path: ${{ inputs.WorkingDir }}/${{ inputs.outputArtifactUploadName }}
           retention-days: 5
-
-      - name: Download artifact A
-        uses: actions/download-artifact@v3
-        if: ${{ inputs.outputArtifactUploadName }}
-        with:
-          name: ${{ inputs.outputArtifactUploadName }} }}
-          path: ${{ inputs.WorkingDir }}/
       
       - name: listing 
         run: ls -R
