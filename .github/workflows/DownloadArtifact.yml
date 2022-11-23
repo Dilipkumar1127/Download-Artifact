@@ -49,8 +49,8 @@ jobs:
         if: ${{ inputs.CompressArtifacts == true }}
         run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}
         
-      - name: Extract Artifact
-        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
+#       - name: Extract Artifact
+#         run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
         
       # - name: If Downloading is True
       #   if: ${{ inputs.DownloadArtifact == true }}
@@ -64,6 +64,8 @@ jobs:
           name: ${{ inputs.outputArtifactUploadName }}
           path: ${{ inputs.outputArtifactUploadName }}.tar
           retention-days: 5
+      - name: Extract Artifact
+        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactPath }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
       
       - name: Publish Artifact
         uses: actions/upload-artifact@v3
