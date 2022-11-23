@@ -31,7 +31,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ inputs.outputArtifactUploadName }}
-          path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactPath }}
+          path: ${{ inputs.WorkingDir }}/
 
       - name: Compressing Artifacts
         if: ${{ inputs.CompressArtifacts == true }}
