@@ -29,6 +29,12 @@ jobs:
         
       - name: working dir print
         run : pwd
+        
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{inputs.outputArtifactUploadName}}
+          path: ${{ inputs.WorkingDirectory }}
 
       - name: Download artifact
         uses: actions/download-artifact@v3
