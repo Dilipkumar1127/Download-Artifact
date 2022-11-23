@@ -29,8 +29,11 @@ jobs:
         
       - name: working dir print
         run : pwd
+      
+      - name: Create Dir 
+        run: mkdir ${{inputs.outputArtifactPath}}
         
-      - name: 'Upload Artifact'
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: ${{inputs.outputArtifactUploadName}}
@@ -45,7 +48,10 @@ jobs:
       - name: Compressing Artifacts
         if: ${{ inputs.CompressArtifacts == true }}
         run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}
-      
+        
+      - name: Extract Artifact
+        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
+        
       # - name: If Downloading is True
       #   if: ${{ inputs.DownloadArtifact == true }}
       #   run: tar -xvf ${{ inputs.ArtifactName }}.tar -C ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
@@ -68,16 +74,8 @@ jobs:
           path: ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}
           retention-days: 5
       
+#       - name: listing 
+#         run: ls -R
       
-      - name: Create Dir 
-        run: mkdir ${{inputs.outputArtifactPath}}
-      
-      - name: listing 
-        run: ls -R
-      
-        
-      - name: Extract Artifact
-        run: tar -xvf ${{ inputs.WorkingDirectory }}/${{ inputs.outputArtifactUploadName }}.tar -C ${{ inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}/
-        
-      - name: view Download
-        run: ls -R && cat ${{ inputs.outputArtifactUploadName }}
+#       - name: view Download
+#         run: ls -R && cat ${{ inputs.outputArtifactUploadName }}
