@@ -1,5 +1,4 @@
 name: Test the Download
-
 on: 
   push: 
     branches: main
@@ -7,14 +6,12 @@ on:
 jobs:
   TestDownload:
     uses: Dilipkumar1127/Download-Artifact/.github/workflows/DownloadArtifact.yml@main
-    with
-      CompressArtifacts: True
-      outputArtifactUploadName: uploadartifact
+    with:
       WorkingDirectory: .
-      # outputArtifactPath:
+      outputArtifactUploadName: uploadartifact
+      CompressArtifacts: True
       - name: List
       - run: ls -R
-
       - name: Extract file 
       - run: tar -xvf ./uploadartifact.tar -C ./
 
