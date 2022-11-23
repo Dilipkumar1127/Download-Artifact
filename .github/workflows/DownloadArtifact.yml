@@ -33,11 +33,14 @@ jobs:
       
 #       - name: Create Dir 
 #         run: mkdir ${{inputs.outputArtifactPath}}
+      - name: Compressing Artifacts
+        if: ${{ inputs.CompressArtifacts == true }}
+        run: tar -cvf ${{ inputs.outputArtifactUploadName }}.tar ${{ inputs.WorkingDirectory}}/${{inputs.outputArtifactPath}}/
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{inputs.outputArtifactUploadName}}
+          name: ${{inputs.outputArtifactUploadName}}.tar
           path: ${{inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
 
 #       - name: Compressing Artifacts
