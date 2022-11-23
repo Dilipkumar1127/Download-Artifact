@@ -1,0 +1,29 @@
+name: Test the Combination Logic
+on: 
+  push: 
+    branches: main
+
+jobs:
+  buildfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build a file 
+        run: echo This is a Input Artifact > uploadartifact
+      
+  Download:
+    uses: Dilipkumar1127/Download-Artifact/.github/workflows/MainWorkflow.yml@main
+    with:
+    
+      WorkingDirectory: '.'
+      inputArtifactPath: 'Downloads'
+      inputArtifactDownloadName: 'uploadartifact'
+      CompressArtifacts: false
+      
+  Extract:
+    uses: Dilipkumar1127/Download-Artifact/.github/workflows/MainWorkflow.yml@main
+    with:
+    
+      WorkingDirectory: '.'
+      outputArtifactPath: 'Downloads'
+      outputArtifactUploadName: 'uploadartifact'
+      CompressArtifacts: false
