@@ -60,6 +60,9 @@ jobs:
         with:
           name: uploadartifact.tar
           path: ${{inputs.WorkingDirectory }}/${{inputs.outputArtifactPath}}
+          
+      - name: listing 
+        run: ls -R 
         
       - name: Extract Compressed Artifact
         if: ${{ inputs.CompressArtifacts == true }}
