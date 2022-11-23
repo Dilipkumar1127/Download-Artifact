@@ -10,7 +10,7 @@ on:
          default: outputartifact
          type: string
       WorkingDirectory:
-         default: './'
+         default: '.'
          type: string
          description: specify start dir
       outputArtifactPath:
@@ -40,7 +40,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ inputs.outputArtifactUploadName }}
-          path: ${{ inputs.WorkingDirectory }}
+          path: ${{ inputs.WorkingDirectory }}/
 
       - name: Compressing Artifacts
         if: ${{ inputs.CompressArtifacts == true }}
