@@ -7,13 +7,11 @@ on:
 jobs:
   TestDownload:
     uses: Dilipkumar1127/Download-Artifact/.github/workflows/DownloadArtifact.yml@main
-    with: 
-      CompressArtifacts: true
+    with:
+      CompressArtifacts: True
       outputArtifactUploadName: uploadartifact
       WorkingDirectory: .
-      # outputArtifactPath: 
-
-
+      # outputArtifactPath:
       - name: List
       - run: ls -R
 
