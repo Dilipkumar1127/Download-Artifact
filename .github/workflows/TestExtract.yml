@@ -23,6 +23,9 @@ jobs:
             name: uploadartifact.tar
             path: ./Downloads
       
+        - name: setup Cloudformation
+          run: scottbrenner/cfn-lint-action@v2
+          
         - name: List
           run: ls -R
         
