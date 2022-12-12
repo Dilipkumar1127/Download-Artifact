@@ -2,6 +2,8 @@ name: Test the Download Logic
 on: 
   push: 
     branches: main
+  
+  workflow_dispatch:
 
 jobs:
   buildfile:
